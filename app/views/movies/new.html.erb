@@ -1,0 +1,24 @@
+<div class="container mt-5">
+  <h1 class="mb-4 text-center">Agregar Nueva Película</h1>
+
+  <%= form_with(model: @movie, local: true, class: "form") do |form| %>
+    <div class="mb-3">
+      <%= form.label :title, "Título", class: "form-label" %>
+      <%= form.text_field :title, class: "form-control" %>
+    </div>
+
+    <div class="mb-3">
+      <%= form.label :genre, "Género", class: "form-label" %>
+      <%= form.text_field :genre, class: "form-control" %>
+    </div>
+
+    <div class="mb-3">
+      <%= form.label :release_year, "Año de Lanzamiento", class: "form-label" %>
+      <%= form.number_field :release_year, class: "form-control" %>
+    </div>
+
+    <div class="text-center">
+      <%= form.submit "Crear Película", class: "btn btn-success" %>
+    </div>
+  <% end %>
+</div>

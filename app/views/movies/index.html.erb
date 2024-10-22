@@ -1,0 +1,31 @@
+<div class="container mt-5">
+  <h1 class="mb-4 text-center">Listado de Películas</h1>
+  <table class="table table-striped">
+    <thead>
+      <tr>
+        <th>Título</th>
+        <th>Género</th>
+        <th>Año de Lanzamiento</th>
+        <th>Cliente</th>
+        <th>Acciones</th>
+      </tr>
+    </thead>
+    <tbody>
+      <% @movies.each do |movie| %>
+        <tr>
+          <td><%= movie.title %></td>
+          <td><%= movie.genre %></td>
+          <td><%= movie.release_year %></td>
+          <td><%= movie.customer&.name || "No asignado" %></td>
+          <td>
+            <%= link_to "Editar", edit_movie_path(movie), class: "btn btn-warning btn-sm" %>
+            <%= link_to "Eliminar", movie, method: :delete, data: { confirm: "¿Estás seguro?" }, class: "btn btn-danger btn-sm" %>
+          </td>
+        </tr>
+      <% end %>
+    </tbody>
+  </table>
+  <div class="text-center">
+    <%= link_to "Agregar Nueva Película", new_movie_path, class: "btn btn-primary" %>
+  </div>
+</div>

@@ -1,0 +1,27 @@
+<h1>Listado de Clientes</h1>
+
+<table>
+  <thead>
+    <tr>
+      <th>Nombre</th>
+      <th>Email</th>
+      <th>Película arrendada</th>
+    </tr>
+  </thead>
+
+  <tbody>
+    <% @customers.each do |customer| %>
+      <tr>
+        <td><%= customer.name %></td>
+        <td><%= customer.email %></td>
+        <td>
+          <% if customer.movie.present? %>
+            <%= customer.movie.title %>
+          <% else %>
+            No tiene película arrendada
+          <% end %>
+        </td>
+      </tr>
+    <% end %>
+  </tbody>
+</table>
