@@ -1,8 +1,3 @@
 class Movie < ApplicationRecord
-    #belongs_to :customer, optional: true
-    
-    belongs_to :customer, optional: true
-    
-      
-  end
-  
+  belongs_to :customer, optional: true
+end
