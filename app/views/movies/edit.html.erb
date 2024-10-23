@@ -1,30 +1,31 @@
-<div class="container mt-5">
-  <h1 class="mb-4 text-center">Editar Película</h1>
+<div class="container">
+  <h1>Editar Película</h1>
 
-  <%= form_with(model: @movie, local: true, class: "form") do |form| %>
-    <div class="mb-3">
-      <%= form.label :title, "Título", class: "form-label" %>
+  <%= form_with model: @movie, local: true do |form| %>
+    <div class="form-group">
+      <%= form.label :title %>
       <%= form.text_field :title, class: "form-control" %>
     </div>
 
-    <div class="mb-3">
-      <%= form.label :genre, "Género", class: "form-label" %>
+    <div class="form-group">
+      <%= form.label :genre %>
       <%= form.text_field :genre, class: "form-control" %>
     </div>
 
-    <div class="mb-3">
-      <%= form.label :release_year, "Año de Lanzamiento", class: "form-label" %>
+    <div class="form-group">
+      <%= form.label :release_year %>
       <%= form.number_field :release_year, class: "form-control" %>
     </div>
 
-    <div class="mb-3">
-      <%= form.label :customer_id, "Asignar Cliente", class: "form-label" %>
-      <%= form.collection_select :customer_id, Customer.all, :id, :name, prompt: "Seleccionar Cliente", class: "form-select" %>
+    <div class="form-group">
+      <%= form.label :description %>
+      <%= form.text_area :description, class: "form-control" %>
     </div>
 
-    <div class="text-center">
-      <%= form.submit "Actualizar Película", class: "btn btn-primary" %>
+    <div class="form-group">
+      <%= form.submit "Guardar Cambios", class: "btn btn-primary" %>
     </div>
   <% end %>
-</div>
 
+  <%= link_to 'Volver al listado', movies_path, class: "btn btn-secondary" %>
+</div>

@@ -1,0 +1,30 @@
+<h1>Nuevo Cliente</h1>
+
+<%= form_with(model: @customer, local: true) do |form| %>
+  <% if @customer.errors.any? %>
+    <div class="alert alert-danger">
+      <h2><%= pluralize(@customer.errors.count, "error") %> prohibió que este cliente se guardara:</h2>
+      <ul>
+        <% @customer.errors.full_messages.each do |message| %>
+          <li><%= message %></li>
+        <% end %>
+      </ul>
+    </div>
+  <% end %>
+
+  <div class="form-group">
+    <%= form.label :name, class: "form-label" %>
+    <%= form.text_field :name, class: "form-control" %>
+  </div>
+
+  <div class="form-group">
+    <%= form.label :email, class: "form-label" %>
+    <%= form.email_field :email, class: "form-control" %>
+  </div>
+
+  <div class="actions">
+    <%= form.submit "Crear Cliente", class: "btn btn-primary" %>
+  </div>
+<% end %>
+
+<%= link_to 'Volver', customers_path, class: "btn btn-secondary" %>

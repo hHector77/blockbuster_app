@@ -3,6 +3,11 @@ class MoviesController < ApplicationController
     @movies = Movie.all
   end
 
+  def show
+    # Buscar la película por el id que viene en los parámetros
+    @movie = Movie.find(params[:id])
+  end
+
   def edit
     @movie = Movie.find(params[:id])
     @customers = Customer.all
@@ -20,6 +25,7 @@ class MoviesController < ApplicationController
   private
 
   def movie_params
-    params.require(:movie).permit(:title, :genre, :year, :customer_id)
+    # Asegúrate de que los parámetros permitidos coinciden con los atributos correctos
+    params.require(:movie).permit(:title, :genre, :release_year)
   end
 end

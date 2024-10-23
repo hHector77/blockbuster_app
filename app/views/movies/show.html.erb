@@ -1,2 +1,19 @@
-<h1>Movies#show</h1>
-<p>Find me in app/views/movies/show.html.erb</p>
+<h1><%= @movie.title %></h1>
+
+<p><strong>Género:</strong> <%= @movie.genre %></p>
+<p><strong>Año de Estreno:</strong> <%= @movie.release_year %></p>
+<p><strong>Descripción:</strong> <%= @movie.description %></p>
+
+<h2>Cliente Asignado</h2>
+<p><%= @movie.customer.present? ? "#{@movie.customer.name} (#{@movie.customer.email})" : "No asignado" %></p>
+
+<h2>Clientes que han alquilado esta película</h2>
+<ul>
+  <% if @movie.customer.present? %>
+    <li><%= @movie.customer.name %> (<%= @movie.customer.email %>)</li>
+  <% else %>
+    <li>No asignado</li>
+  <% end %>
+</ul>
+
+<%= link_to "Volver a la lista", movies_path, class: "btn btn-secondary" %>

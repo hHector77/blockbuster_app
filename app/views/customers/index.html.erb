@@ -1,27 +1,23 @@
-<h1>Listado de Clientes</h1>
+<h1>Clientes</h1>
 
-<table>
+<table class="table table-striped">
   <thead>
     <tr>
       <th>Nombre</th>
       <th>Email</th>
-      <th>Película arrendada</th>
+      <th>Película</th>
     </tr>
   </thead>
-
   <tbody>
     <% @customers.each do |customer| %>
       <tr>
         <td><%= customer.name %></td>
         <td><%= customer.email %></td>
-        <td>
-          <% if customer.movie.present? %>
-            <%= customer.movie.title %>
-          <% else %>
-            No tiene película arrendada
-          <% end %>
-        </td>
+        <td><%= customer.movies.any? ? customer.movies.first.title : "No asignado" %></td>
       </tr>
     <% end %>
   </tbody>
 </table>
+
+<%= link_to "Agregar Nuevo Cliente", new_customer_path, class: "btn btn-primary" %>
+new.htm
